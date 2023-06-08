@@ -38,9 +38,9 @@ class _LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisSize: MainAxisSize.min,
-      children: [
+      children: const [
         SizedBox(height: 20),
         CircularProgressIndicator.adaptive(),
         SizedBox(height: 20),
