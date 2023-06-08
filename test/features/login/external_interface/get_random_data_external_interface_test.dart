@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:clean_framework/clean_framework.dart' hide Response;
+import 'package:clean_framework_demo/core/dependency_providers.dart';
 import 'package:clean_framework_demo/core/requests/data_request.dart';
 import 'package:clean_framework_demo/features/login/login_provider.dart';
 import 'package:dio/dio.dart';
@@ -64,10 +65,10 @@ void main() {
       final result = await interface.request(TestRandomDataRequest());
 
       expect(result.isLeft, isTrue);
-      // expect(
-      //   result.left.message,
-      //   equals(const HttpException('No Internet').toString()),
-      // );
+      expect(
+        result.left.message,
+        equals(const HttpException('No Internet').toString()),
+      );
     });
   });
 }
@@ -78,7 +79,3 @@ class TestRandomDataRequest extends DataRequest {
   @override
   String get resource => 'test/random';
 }
-
-final restClientProvider = DependencyProvider(
-  (_) => Dio(BaseOptions(baseUrl: 'http://127.0.0.1:3001/')),
-);

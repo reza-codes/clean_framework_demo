@@ -1,16 +1,21 @@
 import 'package:clean_framework/clean_framework.dart';
+import 'package:dio/dio.dart';
 
-import '../../../core/dependency_providers.dart';
 import '../../../core/requests/data_request.dart';
 import '../../../core/responses/data_success_response.dart';
 
-class GetRandomDataExternalInterface extends ExternalInterface<DataRequest, DataSuccessResponse> {
+class GetHomeDataExternalInterface extends ExternalInterface<DataRequest, DataSuccessResponse> {
+  GetHomeDataExternalInterface({
+    Dio? dio,
+  }) : _dio = dio ?? Dio(BaseOptions(baseUrl: 'http://127.0.0.1:3001/'));
+
+  final Dio _dio;
+
   @override
   void handleRequest() {
-    final client = locate(restClientProvider);
     on<DataRequest>(
       (request, send) async {
-        final response = await client.get<Map<String, dynamic>>(
+        final response = await _dio.get<Map<String, dynamic>>(
           request.resource,
           queryParameters: request.queryParams,
         );

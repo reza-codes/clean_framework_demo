@@ -1,6 +1,7 @@
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 
+import 'features/home/home_provider.dart';
 import 'features/login/login_provider.dart';
 import 'routing/app_router.dart';
 
@@ -9,6 +10,7 @@ void main() {
     AppProviderScope(
       externalInterfaceProviders: [
         loginExternalInterfaceProvider,
+        homeExternalInterfaceProvider,
       ],
       child: App(),
     ),

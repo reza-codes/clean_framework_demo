@@ -9,7 +9,7 @@ class HomePresenter extends Presenter<HomeViewModel, HomeUIOutput, HomeUseCase> 
   HomePresenter({
     super.key,
     required super.builder,
-  }) : super(provider: HomeUseCaseProvider);
+  }) : super(provider: homeUseCaseProvider);
 
   @override
   HomeViewModel createViewModel(HomeUseCase useCase, HomeUIOutput output) {
