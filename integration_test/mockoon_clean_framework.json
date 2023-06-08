@@ -1,0 +1,108 @@
+{
+  "uuid": "a0f8c76a-de28-48c6-bfed-1721b3ad6ed1",
+  "lastMigration": 25,
+  "name": "Mockoon clean framework",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "0.0.0.0",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "f050cdab-7c79-4272-bebb-bfc14b64c093",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "random",
+      "responses": [
+        {
+          "uuid": "04a3a0d0-b02f-4a57-9953-3939abe0a4f2",
+          "body": "{\n  \"email\": \"{{faker 'internet.email'}}\",\n  \"password\": \"{{faker 'internet.password'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "2ac9f973-d270-4e81-9a67-687bf3b5f03b",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "test/random",
+      "responses": [
+        {
+          "uuid": "f1889d6d-8ff5-484a-a79c-88cc0c440d06",
+          "body": "{\n  \"email\": \"example@email.com\",\n  \"password\": \"123abc@!\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "f050cdab-7c79-4272-bebb-bfc14b64c093"
+    },
+    {
+      "type": "route",
+      "uuid": "2ac9f973-d270-4e81-9a67-687bf3b5f03b"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
