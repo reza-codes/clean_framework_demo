@@ -1,5 +1,8 @@
+import 'package:clean_framework/clean_framework.dart';
+import 'package:clean_framework_demo/features/login/login_provider.dart';
 import 'package:clean_framework_demo/features/login/presentation/login_ui.dart';
 import 'package:clean_framework_demo/features/login/presentation/login_view_model.dart';
+import 'package:clean_framework_demo/routing/app_router.dart';
 import 'package:clean_framework_test/clean_framework_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -36,8 +39,8 @@ void main() {
         navigateToHomePage: (_, __) {},
       ),
       verify: (tester) async {
-        expect(find.byKey(const Key('email-fail-key')), findsOneWidget);
-        expect(find.byKey(const Key('password-fail-key')), findsOneWidget);
+        expect(find.byKey(const Key('email-key')), findsOneWidget);
+        expect(find.byKey(const Key('password-key')), findsOneWidget);
       },
     );
     uiTest(
@@ -71,7 +74,7 @@ void main() {
         navigateToHomePage: (_, __) {},
       ),
       verify: (tester) async {
-        final finder = find.byKey(const Key('email-fail-key'));
+        final finder = find.byKey(const Key('email-key'));
 
         await tester.enterText(finder, 'exampleemail.com');
         // Enter text into the email field
@@ -103,7 +106,7 @@ void main() {
         navigateToHomePage: (_, __) {},
       ),
       verify: (tester) async {
-        final finder = find.byKey(const Key('email-fail-key'));
+        final finder = find.byKey(const Key('email-key'));
 
         await tester.enterText(finder, 'example@email.com');
         // Enter text into the email field
@@ -123,28 +126,52 @@ void main() {
       'Navigates to home page if login successful',
       ui: LoginUI(),
       viewModel: LoginViewModel(
-        password: '1234abc@#!',
-        email: 'example@email.com',
+        password: '',
+        email: '',
         isValidEmail: (_) => true,
         isValidPassword: (_) => true,
         isLoading: false,
         onLogin: (_, __) {},
         navigateToHomePage: (_, __) {},
       ),
+      builder: (context, child) {
+        final appRouter = AppRouter();
+
+        return AppProviderScope(
+          externalInterfaceProviders: [
+            loginExternalInterfaceProvider,
+          ],
+          child: MaterialApp.router(
+            routerConfig: appRouter.config(),
+            title: 'Clean Framework Demo',
+            theme: ThemeData(useMaterial3: true),
+          ),
+        );
+      },
       verify: (tester) async {
-        // await tester.pumpAndSettle();
-        // final finder = find.byKey(const Key('login-button-key'));
+        final emailFinder = find.byKey(const Key('email-key'));
+        final passwordFinder = find.byKey(const Key('password-key'));
+        final buttonFinder = find.byKey(const Key('login-button-key'));
 
-        // expect(finder, findsOneWidget);
+        await tester.pumpAndSettle();
+        await tester.pump(const Duration(seconds: 1));
 
-        // await tester.tap(finder);
-        // await tester.pumpAndSettle();
+        await tester.tap(emailFinder);
+        await tester.pumpAndSettle();
+        await tester.enterText(emailFinder, 'example@email.com');
 
-        // final routeData = tester.routeData;
+        await tester.tap(passwordFinder);
+        await tester.pumpAndSettle();
+        await tester.enterText(passwordFinder, '123@abc!');
 
-        // await pumpRouterApp(tester, router);
-        // final finder = find.byKey(const Key('login-button-key'));
-        // expect(finder, findsOneWidget);
+        await tester.pump(const Duration(seconds: 1));
+
+        await tester.tap(buttonFinder);
+        await tester.pumpAndSettle();
+
+        await tester.pump(const Duration(seconds: 1));
+
+        expect(find.text('Home Page'), findsOneWidget);
       },
     );
   });

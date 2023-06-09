@@ -37,9 +37,9 @@ class _LoadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisSize: MainAxisSize.min,
-      children: const [
+      children: [
         SizedBox(height: 20),
         CircularProgressIndicator.adaptive(),
         SizedBox(height: 20),
@@ -71,7 +71,7 @@ class _LoginForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
             child: TextFormField(
-              key: const Key('email-fail-key'),
+              key: const Key('email-key'),
               validator: (value) {
                 if (!viewModel.isValidEmail(value)) {
                   return 'Please enter valid email';
@@ -88,7 +88,7 @@ class _LoginForm extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
             child: TextFormField(
-              key: const Key('password-fail-key'),
+              key: const Key('password-key'),
               validator: (value) {
                 if (!viewModel.isValidPassword(value)) {
                   return 'Please enter valid password';
