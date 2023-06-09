@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 
-import '../../../routing/app_router.gr.dart';
 import 'login_presenter.dart';
 import 'login_view_model.dart';
 
@@ -111,12 +110,7 @@ class _LoginForm extends StatelessWidget {
             key: const Key('login-button-key'),
             onPressed: () {
               viewModel.onLogin(emailController.text, passwordController.text);
-              if (_formKey.currentState!.validate()) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Data is valid ✅')),
-                );
-                context.router.replace(HomeUI());
-              }
+              viewModel.navigateToHomePage(context, _formKey.currentState!.validate());
             },
             icon: const Icon(Icons.login),
             label: const Text("Login"),

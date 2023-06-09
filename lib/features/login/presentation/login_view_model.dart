@@ -1,4 +1,5 @@
 import 'package:clean_framework/clean_framework.dart';
+import 'package:flutter/material.dart';
 
 class LoginViewModel extends ViewModel {
   const LoginViewModel({
@@ -8,6 +9,7 @@ class LoginViewModel extends ViewModel {
     required this.onLogin,
     required this.isValidEmail,
     required this.isValidPassword,
+    required this.navigateToHomePage,
     this.errorMsg,
   });
 
@@ -17,6 +19,7 @@ class LoginViewModel extends ViewModel {
   final String? errorMsg;
 
   final Function(String email, String password) onLogin;
+  final Function(BuildContext context, bool validate) navigateToHomePage;
   final bool Function(String? email) isValidEmail;
   final bool Function(String? password) isValidPassword;
 

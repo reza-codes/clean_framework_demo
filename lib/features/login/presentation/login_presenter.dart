@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:clean_framework/clean_framework.dart';
 import 'package:flutter/material.dart';
 
+import '../../../routing/app_router.gr.dart';
 import '../domain/login_entity.dart';
 import '../domain/login_input.dart';
 import '../login_provider.dart';
@@ -27,7 +29,14 @@ class LoginPresenter extends Presenter<LoginViewModel, LoginUIOutput, LoginUseCa
       isValidEmail: useCase.isValidEmail,
       isValidPassword: useCase.isValidPassword,
       onLogin: (email, password) => useCase.setInput(LoginInput(email: email, password: password)),
+      navigateToHomePage: navigateToHomePage,
       isLoading: output.status == LoginStatus.loading,
     );
+  }
+
+  void navigateToHomePage(BuildContext context, bool validate) {
+    if (validate) {
+      context.router.replace(HomeUI());
+    }
   }
 }

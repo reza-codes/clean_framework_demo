@@ -16,6 +16,7 @@ void main() {
         isValidPassword: (_) => false,
         isLoading: true,
         onLogin: (_, __) {},
+        navigateToHomePage: (_, __) {},
       ),
       verify: (tester) async {
         expect(find.byType(CircularProgressIndicator), findsOneWidget);
@@ -32,6 +33,7 @@ void main() {
         isValidPassword: (_) => true,
         isLoading: false,
         onLogin: (_, __) {},
+        navigateToHomePage: (_, __) {},
       ),
       verify: (tester) async {
         expect(find.byKey(const Key('email-fail-key')), findsOneWidget);
@@ -49,6 +51,7 @@ void main() {
         isLoading: false,
         errorMsg: 'Error',
         onLogin: (_, __) {},
+        navigateToHomePage: (_, __) {},
       ),
       verify: (tester) async {
         expect(find.text('Error'), findsOneWidget);
@@ -65,6 +68,7 @@ void main() {
         isValidPassword: (_) => false,
         isLoading: false,
         onLogin: (_, __) {},
+        navigateToHomePage: (_, __) {},
       ),
       verify: (tester) async {
         final finder = find.byKey(const Key('email-fail-key'));
@@ -96,6 +100,7 @@ void main() {
         isValidPassword: (_) => false,
         isLoading: false,
         onLogin: (_, __) {},
+        navigateToHomePage: (_, __) {},
       ),
       verify: (tester) async {
         final finder = find.byKey(const Key('email-fail-key'));
@@ -124,6 +129,7 @@ void main() {
         isValidPassword: (_) => true,
         isLoading: false,
         onLogin: (_, __) {},
+        navigateToHomePage: (_, __) {},
       ),
       verify: (tester) async {
         // await tester.pumpAndSettle();
