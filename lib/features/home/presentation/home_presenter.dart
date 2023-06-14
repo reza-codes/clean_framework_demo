@@ -13,6 +13,9 @@ class HomePresenter extends Presenter<HomeViewModel, HomeUIOutput, HomeUseCase> 
 
   @override
   HomeViewModel createViewModel(HomeUseCase useCase, HomeUIOutput output) {
-    return const HomeViewModel();
+    return HomeViewModel(
+      increment: useCase.increment,
+      decrement: useCase.decrement,
+    );
   }
 }

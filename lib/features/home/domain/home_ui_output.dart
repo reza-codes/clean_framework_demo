@@ -6,3 +6,14 @@ class HomeUIOutput extends Output {
   @override
   List<Object?> get props => [];
 }
+
+class CounterUIOutput extends Output {
+  const CounterUIOutput({
+    required this.counter,
+  });
+
+  final int counter;
+
+  @override
+  List<Object?> get props => [counter];
+}

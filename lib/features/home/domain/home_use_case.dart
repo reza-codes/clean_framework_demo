@@ -10,15 +10,29 @@ class HomeUseCase extends UseCase<HomeEntity> {
           entity: const HomeEntity(),
           transformers: [
             HomeUIOutputTransformer(),
+            CounterUIOutputTransformer(),
             HomeInputTransfer(),
           ],
         );
+
+  void increment() => entity = entity.copyWith(counter: entity.counter + 1);
+
+  void decrement() => entity = entity.copyWith(counter: entity.counter - 1);
 }
 
 class HomeUIOutputTransformer extends OutputTransformer<HomeEntity, HomeUIOutput> {
   @override
   HomeUIOutput transform(HomeEntity entity) {
     return const HomeUIOutput();
+  }
+}
+
+class CounterUIOutputTransformer extends OutputTransformer<HomeEntity, CounterUIOutput> {
+  @override
+  CounterUIOutput transform(HomeEntity entity) {
+    return CounterUIOutput(
+      counter: entity.counter,
+    );
   }
 }
 
