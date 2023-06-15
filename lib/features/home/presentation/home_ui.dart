@@ -1,11 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_framework/clean_framework.dart';
-import 'package:clean_framework_demo/features/home/presentation/ui_widgets/counter/counter_ui.dart';
 import 'package:flutter/material.dart';
 
+import '../domain/home_entity.dart';
 import 'home_presenter.dart';
 import 'home_view_model.dart';
 import 'ui_widgets/colored_button/colored_button_widget.dart';
+import 'ui_widgets/counter/counter_ui.dart';
 
 @RoutePage()
 class HomeUI extends UI<HomeViewModel> {
@@ -26,7 +27,29 @@ class HomeUI extends UI<HomeViewModel> {
           "Home Page",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
         ),
+        backgroundColor: viewModel.bgColor,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(50),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () => viewModel.setColor(BgColor.white),
+                child: const Text('white'),
+              ),
+              ElevatedButton(
+                onPressed: () => viewModel.setColor(BgColor.lightBlue),
+                child: const Text('light blue'),
+              ),
+              ElevatedButton(
+                onPressed: () => viewModel.setColor(BgColor.lightRed),
+                child: const Text('light red'),
+              ),
+            ],
+          ),
+        ),
       ),
+      backgroundColor: viewModel.bgColor,
       body: Center(
         heightFactor: 2,
         child: Column(
@@ -51,8 +74,12 @@ class HomeUI extends UI<HomeViewModel> {
                 ),
               ],
             ),
+            ElevatedButton(
+              onPressed: () => viewModel.reset(0),
+              child: const Text('Reset counter'),
+            ),
             const SizedBox(height: 20),
-            const ColoredButtonWidget(),
+            ColoredButtonWidget(),
           ],
         ),
       ),

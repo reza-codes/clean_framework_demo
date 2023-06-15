@@ -1,28 +1,14 @@
 import 'package:clean_framework/clean_framework.dart';
-import 'package:dio/dio.dart';
 
 import '../../../core/requests/data_request.dart';
 import '../../../core/responses/data_success_response.dart';
 
 class GetHomeDataExternalInterface extends ExternalInterface<DataRequest, DataSuccessResponse> {
-  GetHomeDataExternalInterface({
-    Dio? dio,
-  }) : _dio = dio ?? Dio(BaseOptions(baseUrl: 'http://127.0.0.1:3001/'));
-
-  final Dio _dio;
-
   @override
   void handleRequest() {
     on<DataRequest>(
       (request, send) async {
-        final response = await _dio.get<Map<String, dynamic>>(
-          request.resource,
-          queryParameters: request.queryParams,
-        );
-
-        final data = response.data!;
-
-        send(DataSuccessResponse(data: data));
+        send(const DataSuccessResponse(data: {}));
       },
     );
   }
@@ -32,3 +18,33 @@ class GetHomeDataExternalInterface extends ExternalInterface<DataRequest, DataSu
     return UnknownFailureResponse(error);
   }
 }
+
+
+// write a test for the external interface
+// Path: test/features/home/external_interface/get_home_data_external_interface_test.dart
+// Compare this snippet from test/features/login/external_interface/get_random_data_external_interface_test.dart:
+// import 'package:clean_framework/clean_framework.dart';
+// import 'package:clean_framework_demo/core/dependency_providers.dart';
+// import 'package:clean_framework_demo/core/requests/data_request.dart';
+
+// import 'package:clean_framework_demo/features/login/external_interface/get_random_data_external_interface.dart';
+// import 'package:flutter_test/flutter_test.dart';
+
+// void main() {
+//   test('GetRandomDataExternalInterface success', () async {
+//     final externalInterface = GetRandomDataExternalInterface();
+//     final request = DataRequest();
+
+//     final response = await externalInterface.request(request);
+
+//     expect(response, isA<DataSuccessResponse>());
+//   });
+
+//   test('GetRandomDataExternalInterface failure', () async {
+//     final externalInterface = GetRandomDataExternalInterface();
+//     final request = DataRequest();
+
+//     final response = await externalInterface.request(request);
+
+//     expect(response, isA<UnknownFailureResponse>());
+//   });

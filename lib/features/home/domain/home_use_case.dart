@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:clean_framework/clean_framework.dart';
 
 import 'home_entity.dart';
@@ -23,7 +25,24 @@ class HomeUseCase extends UseCase<HomeEntity> {
 class HomeUIOutputTransformer extends OutputTransformer<HomeEntity, HomeUIOutput> {
   @override
   HomeUIOutput transform(HomeEntity entity) {
-    return const HomeUIOutput();
+    late Color bgColor;
+
+    switch (entity.bgColor) {
+      case BgColor.white:
+        bgColor = const Color.fromARGB(255, 255, 255, 255);
+        break;
+      case BgColor.lightBlue:
+        bgColor = const Color.fromARGB(255, 183, 218, 255);
+        break;
+      case BgColor.lightRed:
+        bgColor = const Color.fromARGB(255, 255, 183, 183);
+        break;
+      default:
+    }
+
+    return HomeUIOutput(
+      bgColor: bgColor,
+    );
   }
 }
 
@@ -39,6 +58,9 @@ class CounterUIOutputTransformer extends OutputTransformer<HomeEntity, CounterUI
 class HomeInputTransfer extends InputTransformer<HomeEntity, HomeInput> {
   @override
   HomeEntity transform(HomeEntity entity, HomeInput input) {
-    return entity.copyWith();
+    return entity.copyWith(
+      counter: input.counter,
+      bgColor: input.bgColor,
+    );
   }
 }

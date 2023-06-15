@@ -1,10 +1,16 @@
+import 'dart:ui';
+
 import 'package:clean_framework/clean_framework.dart';
 
 class HomeUIOutput extends Output {
-  const HomeUIOutput();
+  const HomeUIOutput({
+    required this.bgColor,
+  });
+
+  final Color bgColor;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [bgColor];
 }
 
 class CounterUIOutput extends Output {

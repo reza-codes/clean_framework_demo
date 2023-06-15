@@ -8,6 +8,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../mock_data.dart';
+
 void main() {
   group('GetRandomDataExternalInterface tests |', () {
     test('get request success', () async {
@@ -72,8 +74,6 @@ void main() {
     });
   });
 }
-
-class DioMock extends Mock implements Dio {}
 
 class TestRandomDataRequest extends DataRequest {
   @override

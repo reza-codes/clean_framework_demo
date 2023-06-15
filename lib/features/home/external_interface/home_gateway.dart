@@ -23,7 +23,7 @@ class HomeDataGateway
 
 class HomeDataRequest extends DataRequest {
   @override
-  String get resource => 'home';
+  String get resource => '';
 }
 
 class HomeGatewayOutput extends Output {
