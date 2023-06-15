@@ -120,7 +120,7 @@ void main() {
       'onLogin - test',
       provider: loginUseCaseProvider,
       execute: (useCase) {
-        useCase.setInput(const LoginInput(password: '1234abc@#!', email: 'example@email.com'));
+        useCase.setInput(LoginInput(password: '1234abc@#!', email: 'example@email.com'));
       },
       expect: () => [
         const LoginUIOutput(

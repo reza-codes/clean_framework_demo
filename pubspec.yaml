@@ -29,13 +29,10 @@ dependencies:
   cupertino_icons: ^1.0.5
 
   # https://pub.dev/packages/clean_framework
-  clean_framework: ^2.1.4
-
-  #https://pub.dev/packages/clean_framework_router
-  clean_framework_router: ^0.4.3
+  clean_framework: ^3.0.1
 
   # https://pub.dev/packages/dio
-  dio: ^5.1.2
+  dio: ^5.2.1+1
 
   # https://pub.dev/packages/auto_route
   auto_route: ^7.4.0
@@ -54,7 +51,7 @@ dev_dependencies:
   build_runner:
 
   # https://pub.dev/packages/clean_framework_test
-  clean_framework_test: ^0.4.7
+  clean_framework_test: ^0.5.1
 
   # https://pub.dev/packages/mocktail
   mocktail: ^0.3.0

@@ -19,7 +19,7 @@ class LoginUseCase extends UseCase<LoginEntity> {
     entity = entity.copyWith(status: LoginStatus.loading);
     await Future.delayed(const Duration(seconds: 2));
 
-    await request<RandomDataGatewayOutput, LoginDataRandomGatewayInput>(
+    await request<LoginDataRandomGatewayInput>(
       RandomDataGatewayOutput(),
       onSuccess: (LoginDataRandomGatewayInput data) {
         return entity.copyWith(

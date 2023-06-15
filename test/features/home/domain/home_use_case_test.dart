@@ -42,7 +42,7 @@ void main() {
       'setInput reset counter',
       provider: homeUseCaseProvider,
       execute: (useCase) {
-        useCase.setInput(const HomeInput(counter: 0));
+        useCase.setInput(HomeInput(counter: 0));
       },
       expect: () => [
         const CounterUIOutput(counter: 0),
@@ -56,7 +56,7 @@ void main() {
       'setInput setColor white',
       provider: homeUseCaseProvider,
       execute: (useCase) {
-        useCase.setInput(const HomeInput(bgColor: BgColor.white));
+        useCase.setInput(HomeInput(bgColor: BgColor.white));
       },
       expect: () => [
         const HomeUIOutput(bgColor: Color.fromARGB(255, 255, 255, 255)),
@@ -70,7 +70,7 @@ void main() {
       'setInput setColor lightBlue',
       provider: homeUseCaseProvider,
       execute: (useCase) {
-        useCase.setInput(const HomeInput(bgColor: BgColor.lightBlue));
+        useCase.setInput(HomeInput(bgColor: BgColor.lightBlue));
       },
       expect: () => [
         const HomeUIOutput(bgColor: Color.fromARGB(255, 183, 218, 255)),
@@ -84,7 +84,7 @@ void main() {
       'setInput setColor lightRed',
       provider: homeUseCaseProvider,
       execute: (useCase) {
-        useCase.setInput(const HomeInput(bgColor: BgColor.lightRed));
+        useCase.setInput(HomeInput(bgColor: BgColor.lightRed));
       },
       expect: () => [
         const HomeUIOutput(bgColor: Color.fromARGB(255, 255, 183, 183)),

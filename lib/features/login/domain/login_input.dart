@@ -1,7 +1,7 @@
 import 'package:clean_framework/clean_framework.dart';
 
 class LoginInput extends Input {
-  const LoginInput({
+  LoginInput({
     required this.email,
     required this.password,
   });

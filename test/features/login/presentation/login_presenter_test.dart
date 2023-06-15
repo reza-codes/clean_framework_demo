@@ -11,7 +11,7 @@ import 'package:mocktail/mocktail.dart';
 
 void main() {
   setUpAll(() {
-    registerFallbackValue(const LoginInput(email: 'example@email.com', password: '123@abc!'));
+    registerFallbackValue(LoginInput(email: 'example@email.com', password: '123@abc!'));
   });
 
   group('HomePresenter tests |', () {
