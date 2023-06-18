@@ -141,10 +141,10 @@ packages:
     dependency: "direct main"
     description:
       name: clean_framework
-      sha256: "990373492f7cfcfe451704e60cd41fb7a3cc4a81101053ca737be563c284593e"
+      sha256: "596cb26af0abcbfb01db816f4d3ee3e3583a80d83543f05e08f85583cefab1e5"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.1"
+    version: "3.1.0"
   clean_framework_router:
     dependency: transitive
     description:
